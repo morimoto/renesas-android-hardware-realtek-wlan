@@ -44,6 +44,7 @@
 #define STATION_INFO_BSS_PARAM_SHORT_SLOT_TIME	BIT(NL80211_STA_BSS_PARAM_SHORT_SLOT_TIME)
 #define STATION_INFO_BSS_PARAM_DTIM_PERIOD	BIT(NL80211_STA_BSS_PARAM_DTIM_PERIOD)
 #define STATION_INFO_BSS_PARAM_BEACON_INTERVAL	BIT(NL80211_STA_BSS_PARAM_BEACON_INTERVAL)
+#define STATION_INFO_TX_FAILED			BIT(NL80211_STA_INFO_TX_FAILED)
 #endif /* Linux kernel >= 4.0.0 */
 
 #include <rtw_wifi_regd.h>
@@ -1704,7 +1705,7 @@ static int cfg80211_rtw_get_station(struct wiphy *wiphy,
 	) {
 		struct wlan_network  *cur_network = &(pmlmepriv->cur_network);
 		struct pwrctrl_priv *pwrctl = adapter_to_pwrctl(padapter);
-		
+
 		if (_rtw_memcmp((u8 *)mac, cur_network->network.MacAddress, ETH_ALEN) == _FALSE) {
 			RTW_INFO("%s, mismatch bssid="MAC_FMT"\n", __func__, MAC_ARG(cur_network->network.MacAddress));
 			ret = -ENOENT;
@@ -1712,7 +1713,7 @@ static int cfg80211_rtw_get_station(struct wiphy *wiphy,
 		}
 
 		sinfo->filled |= STATION_INFO_SIGNAL;
-		sinfo->signal = translate_percentage_to_dbm(padapter->recvpriv.signal_strength);
+		sinfo->signal = psta->rssi;
 
 		sinfo->filled |= STATION_INFO_TX_BITRATE;
 		sinfo->txrate.legacy = rtw_get_cur_max_rate(padapter);
@@ -1728,6 +1729,9 @@ static int cfg80211_rtw_get_station(struct wiphy *wiphy,
 
 		sinfo->filled |= STATION_INFO_TX_PACKETS;
 		sinfo->tx_packets = psta->sta_stats.tx_pkts;
+
+		sinfo->filled |= STATION_INFO_TX_FAILED;
+		sinfo->tx_failed = psta->sta_stats.tx_drops;
 
 		sinfo->filled |= STATION_INFO_BSS_PARAM;
 
