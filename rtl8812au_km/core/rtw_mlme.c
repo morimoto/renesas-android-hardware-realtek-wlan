@@ -2332,7 +2332,6 @@ void rtw_sta_mstatus_disc_rpt(_adapter *adapter, u8 mac_id)
 	struct macid_ctl_t *macid_ctl = &adapter->dvobj->macid_ctl;
 
 	RTW_INFO("%s "ADPT_FMT" - mac_id=%d\n", __func__, ADPT_ARG(adapter), mac_id);
-
 	if (mac_id >= 0 && mac_id < macid_ctl->num) {
 		rtw_hal_set_FwMediaStatusRpt_single_cmd(adapter, 0, 0, 0, 0, mac_id);
 		/*

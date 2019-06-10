@@ -387,7 +387,7 @@ __inline static void rtw_dump_stack(void)
 }
 
 #ifdef PLATFORM_LINUX
-#define rtw_warn_on(condition) WARN_ON(condition)
+#define rtw_warn_on(condition) WARN_ON(WARN_ENABLE && condition)
 #else
 #define rtw_warn_on(condition) do {} while (0)
 #endif

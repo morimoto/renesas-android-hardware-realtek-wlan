@@ -1717,32 +1717,12 @@ static int cfg80211_rtw_get_station(struct wiphy *wiphy,
 		sinfo->filled |= STATION_INFO_TX_BITRATE;
 		sinfo->txrate.legacy = rtw_get_cur_max_rate(padapter);
 
-		/* to-do set the txrate flags */
-		// for example something like:
-		//sinfo->txrate.flags |= NL80211_RATE_INFO_VHT_NSS;
-		//sinfo->txrate.nss = rtw_vht_mcsmap_to_nss(psta->vhtpriv.vht_mcs_map);
-
-
-		/* bw_mode is more delicate
-		   sinfo->txrate.bw is flagged
-		   psta->bw_mode */
-
-		/*
-		sinfo->txrate.bw = psta->bw_mode;
-		sinfo->txrate.flags |= psta->bw_mode;
-		printk("rtw_get_current_tx_sgi: %i", rtw_get_current_tx_sgi(padapter, mac));
-		printk("NSS: %i", rtw_vht_mcsmap_to_nss(psta->vhtpriv.vht_mcs_map));
-		printk("BW MODE: %i", psta->bw_mode);
-		printk("5 10 20 40 80 160: %i %i %i %i %i %i", STATION_INFO_TX_BITRATE_BW_5, STATION_INFO_TX_BITRATE_BW_10, STATION_INFO_TX_BITRATE_BW_20, STATION_INFO_TX_BITRATE_BW_40, STATION_INFO_TX_BITRATE_BW_80, STATION_INFO_TX_BITRATE_BW_160);
-		printk("5 10 20 40 80 160: %i %i %i %i %i %i", RATE_INFO_BW_5, RATE_INFO_BW_10, RATE_INFO_BW_20, RATE_INFO_BW_40, RATE_INFO_BW_80, RATE_INFO_BW_160);
-		*/
-
 		sinfo->filled |= STATION_INFO_RX_BYTES;
 		sinfo->rx_bytes = psta->sta_stats.rx_bytes;
 
 		sinfo->filled |= STATION_INFO_TX_BYTES;
 		sinfo->tx_bytes = psta->sta_stats.tx_bytes;
-		
+
 		sinfo->filled |= STATION_INFO_RX_PACKETS;
 		sinfo->rx_packets = sta_rx_data_pkts(psta);
 
