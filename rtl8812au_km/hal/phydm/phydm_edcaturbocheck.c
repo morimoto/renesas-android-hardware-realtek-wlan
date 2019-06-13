@@ -136,7 +136,7 @@ odm_EdcaTurboCheckCE(
 		return;
 	}
 
-	if ((pregpriv->wifi_spec == 1) )//|| (pmlmeinfo->HT_enable == 0))
+	if (pregpriv->wifi_spec == 1) /*|| (pmlmeinfo->HT_enable == 0)) */
 	{
 		precvpriv->bIsAnyNonBEPkts = _FALSE;
 		return;

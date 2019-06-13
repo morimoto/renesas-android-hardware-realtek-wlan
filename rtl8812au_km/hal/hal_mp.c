@@ -173,7 +173,7 @@ void hal_mpt_CCKTxPowerAdjust(PADAPTER Adapter, BOOLEAN bInCH14)
 	} else if (IS_HARDWARE_TYPE_8723D(Adapter)) {
 		/* 2.4G CCK TX DFIR */
 		/* 2016.01.20 Suggest from RS BB mingzhi*/
-		if ((u1Channel == 14)) {
+		if (u1Channel == 14) {
 			PHY_SetBBReg(Adapter, rCCK0_TxFilter2, bMaskDWord, 0x0000B81C);
 			PHY_SetBBReg(Adapter, rCCK0_DebugPort, bMaskDWord, 0x00000000);
 			PHY_SetBBReg(Adapter, 0xAAC, bMaskDWord, 0x00003667);

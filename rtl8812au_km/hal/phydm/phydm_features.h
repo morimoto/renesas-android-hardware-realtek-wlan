@@ -18,8 +18,8 @@
  *
  ******************************************************************************/
 
-#ifndef	__PHYDM_FEATURES_H__
-#define __PHYDM_FEATURES
+#ifndef __PHYDM_FEATURES_H__
+#define __PHYDM_FEATURES_H__
 
 
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)

@@ -484,11 +484,12 @@ void rtw_set_rpwm(PADAPTER padapter, u8 pslv)
 	else
 #endif /* CONFIG_LPS_RPWM_TIMER */
 	{
-		if ((pwrpriv->rpwm == pslv)
 #ifdef CONFIG_LPS_LCLK
-		    || ((pwrpriv->rpwm >= PS_STATE_S2) && (pslv >= PS_STATE_S2))
+		if ((pwrpriv->rpwm == pslv) || ((pwrpriv->rpwm >= PS_STATE_S2) && (pslv >= PS_STATE_S2)))
+#else
+		if (pwrpriv->rpwm == pslv)
 #endif
-		   ) {
+		{
 			return;
 		}
 	}
