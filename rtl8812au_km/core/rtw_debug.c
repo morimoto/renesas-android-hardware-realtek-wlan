@@ -423,7 +423,7 @@ void dump_adapters_status(void *sel, struct dvobj_priv *dvobj)
 	for (i = 0; i < dvobj->iface_nums; i++) {
 		iface = dvobj->padapters[i];
 		if (iface) {
-			RTW_PRINT_SEL(sel, "%2d %-8s "MAC_FMT" %4hhu %3u,%u,%u "MLME_STATE_FMT" %s%s\n"
+			RTW_PRINT_SEL(sel, "%2d %-8s "MAC_FMT" %4u %3u,%u,%u "MLME_STATE_FMT" %s%s\n"
 				, i, ADPT_ARG(iface)
 				, MAC_ARG(adapter_mac_addr(iface))
 				, get_hw_port(iface)

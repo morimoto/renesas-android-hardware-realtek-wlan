@@ -241,14 +241,14 @@ VOID phydm_BasicDbgMessage(	IN		PVOID			pDM_VOID);
 #define	PHYDM_VAST_INFO_SNPRINTF(msg)\
 		do {\
 			snprintf msg;\
-			DbgPrint(output);\
+			DbgPrint("%s", output);\
 		} while (0)
 
 #if (PHYDM_DBGPRINT == 1)
 #define	PHYDM_SNPRINTF(msg)\
 		do {\
 			snprintf msg;\
-			DbgPrint(output);\
+			DbgPrint("%s", output);\
 		} while (0)
 #else
 #define	PHYDM_SNPRINTF(msg)\
