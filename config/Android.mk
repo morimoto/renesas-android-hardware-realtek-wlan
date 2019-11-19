@@ -22,3 +22,10 @@ LOCAL_MODULE_CLASS          := ETC
 LOCAL_SRC_FILES             := wpa_supplicant.conf
 LOCAL_MODULE_PATH           := $(TARGET_OUT_VENDOR)/etc/wifi/
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE                := p2p_supplicant.conf
+LOCAL_MODULE_CLASS          := ETC
+LOCAL_SRC_FILES             := p2p_supplicant.conf
+LOCAL_MODULE_PATH           := $(TARGET_OUT_VENDOR)/etc/wifi/
+include $(BUILD_PREBUILT)
