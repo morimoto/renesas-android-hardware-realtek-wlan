@@ -144,5 +144,28 @@ config CONFIG_ENABLE_DRIVER_WARNINGS
 		informing developer about some unexpected but not critical
 		situations in driver runtime.
 
+config CONFIG_IOCTL_CFG80211
+	bool "Linux cfg80211 interface ioctl's support"
+	default true
+
+config CONFIG_RTW_USE_CFG80211_STA_EVENT
+	bool "Support of cfg80211 STA events"
+	depends on CONFIG_IOCTL_CFG80211
+	default false
+	help
+		This config is used for driver to indicate new cfg80211 STA
+		event, which is required  by wpa_supplicant_8. Linux kernel
+		supports this feature after kernel 3.2.
+
+config CONFIG_RADIO_WORK
+	bool "Enable 'radio work' wpa_supplicant mechanism"
+	default false
+
+config CONFIG_CONCURRENT_MODE
+	bool "Enable driver concurrent mode"
+	default false
+	help
+		This config enables driver concurrent mode, that is needed for
+		dual STA + P2P mode.
 
 endmenu # "Features"
