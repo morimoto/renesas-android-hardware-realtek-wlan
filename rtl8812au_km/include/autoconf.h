@@ -282,6 +282,7 @@
 	#define MP_DRIVER 0
 #endif
 
+#define CONFIG_RTW_IOCTL_SET_COUNTRY
 
 /*
  * Platform  Related Config
